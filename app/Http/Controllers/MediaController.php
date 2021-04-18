@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\MediaEnum;
 use App\Http\Requests\ImageUploadReqeust;
-use Illuminate\Http\Request;
 
 class MediaController extends Controller
 {
@@ -16,9 +16,9 @@ class MediaController extends Controller
     {
         $image = $request->file('image');
         $name = time() . '.' . $image->getClientOriginalExtension();
-        $destinationPath = storage_path('app/public/uploads/images');
+        $destinationPath = public_path(MediaEnum::USER_UPLOAD_IMAGE_PATH);
         $image->move($destinationPath, $name);
-        $this->save();
-        return back()->with('success', 'Image Upload successfully');
+        $data['path'] = MediaEnum::USER_UPLOAD_IMAGE_PATH;
+        return response(['message' => trans('api/media.image_uploaded_success'), 'data' => $data]);
     }
 }

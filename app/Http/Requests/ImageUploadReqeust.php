@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Traits\ApiRequestTrait;
+use App\Traits\Api\ApiRequestTrait;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ImageUploadReqeust extends FormRequest
