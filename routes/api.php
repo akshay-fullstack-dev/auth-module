@@ -21,4 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 // register user routes
 Route::post('user', [UserController::class, 'create']);
-Route::post('upload-image', [MediaController::class, 'upload']);
+Route::post('upload-picture', [MediaController::class, 'uploadPicture']);
